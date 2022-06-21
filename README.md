@@ -16,5 +16,5 @@ Adds shortcode [jet_repeater] to display the repeater field.
 ![image](https://user-images.githubusercontent.com/33423149/174735312-28e6efc3-b941-4df9-9b46-142c741cfcfc.png)
 > Jet Repeater for Shortcode widget
 
-![Output example]( screens/screen-02.jpg "Jet Repeater for Listings" )
+![image](https://user-images.githubusercontent.com/33423149/174735633-e12776b7-3b81-4808-ae67-cf18f364f6c4.png)
 > Jet Repeater for Dynamic field
