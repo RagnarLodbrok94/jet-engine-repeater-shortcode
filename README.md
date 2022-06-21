@@ -5,7 +5,7 @@ Adds shortcode [jet_repeater] to display the repeater field.
 - id - enter the post id manually, otherwise the shortcode will get it from the context.
 - repeater_name - meta field label. It will be displayed on Post edit page.
 - row - repeater row number. Rows start at 0, not 1.
-- sub_field_name - Repeater subfield name. It will be displayed on Post edit page.
+- sub_field_name - repeater subfield name. It will be displayed on Post edit page.
 
 ## Instructions
 - Install and activate the plugin;
