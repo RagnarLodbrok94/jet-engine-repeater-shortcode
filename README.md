@@ -13,7 +13,7 @@ Adds shortcode [jet_repeater] to display the repeater field.
 
 ## Screenshots
 
-![Callback option]( screens/screen-01.jpg "Jet Repeater for Shortcode widget" )
+![image](https://user-images.githubusercontent.com/33423149/174735312-28e6efc3-b941-4df9-9b46-142c741cfcfc.png)
 > Jet Repeater for Shortcode widget
 
 ![Output example]( screens/screen-02.jpg "Jet Repeater for Listings" )
