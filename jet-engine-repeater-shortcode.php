@@ -3,7 +3,7 @@
  * Plugin Name: JetEngine - Get value from repeater field
  * Plugin URI: #
  * Description: Creates a new shortcode that allows get value from repeater field.
- * Version:     1.1.2
+ * Version:     1.0.0
  * Author:      Crocoblock
  * Author URI:  https://crocoblock.com/
  * License:     GPL-3.0+
@@ -55,7 +55,7 @@ class Jet_Engine_Repeater_Shortcode {
 
 		}
 
-		return $index ?? 0;
+		return $index;
 	}
 
 	public function get_content( $attrs = array() ) {
