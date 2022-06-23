@@ -18,40 +18,69 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 class Jet_Engine_Repeater_Shortcode {
+
 	public function __construct() {
 		add_shortcode( 'jet_repeater', [ $this, 'get_content' ] );
 	}
 
 	public function get_post_id() {
+
 		if ( function_exists( 'jet_engine' ) ) {
 			return jet_engine()->listings->data->get_current_object_id();
 		}
 
-
 		return get_the_ID();
 	}
 
-	public function get_content( $atts = array() ) {
+	public function get_row_index( $row ) {
+		$index = 0;
 
-		$atts = shortcode_atts( array(
+		if ( function_exists( 'jet_engine' ) ) {
+			$index = jet_engine()->listings->data->get_index();
+		}
+
+		if ( is_numeric( $row ) ) {
+
+			if ( str_starts_with( $row, '+' ) ) {
+				$coff  = trim( $row, '+' );
+				$row = $index + + $coff;
+			}
+
+			if ( str_starts_with( $row, '-' ) ) {
+				$coff  = trim( $row, '-' );
+				$row = $index - + $coff;
+			}
+
+			return $row;
+
+		}
+
+		return $index ?? 0;
+	}
+
+	public function get_content( $attrs = array() ) {
+
+		$attrs = shortcode_atts( array(
 			'id'             => '',
 			'repeater_name'  => '',
-			'row'            => '0',
+			'row'            => '',
 			'sub_field_name' => '',
-		), $atts, 'jet_repeater' );
+		), $attrs, 'jet_repeater' );
 
-		if ( empty( $atts['repeater_name'] ) && empty( $atts['sub_field_name'] ) ) {
+		if ( empty( $attrs['repeater_name'] ) && empty( $attrs['sub_field_name'] ) ) {
 			return 0;
 		}
 
-		if ( empty( $atts['id'] ) ) {
-			$atts['id'] = $this->get_post_id();
+		if ( empty( $attrs['id'] ) ) {
+			$attrs['id'] = $this->get_post_id();
 		}
 
-		$fields = get_post_meta( $atts['id'], $atts['repeater_name'], true );
-		$row    = $fields[ 'item-' . $atts['row'] ] ?? array();
+		$attrs['row'] = $this->get_row_index( $attrs['row'] );
 
-		return $row[ $atts['sub_field_name'] ] ?? 0;
+		$fields = get_post_meta( $attrs['id'], $attrs['repeater_name'], true );
+		$row    = $fields[ 'item-' . $attrs['row'] ] ?? array();
+
+		return $row[ $attrs['sub_field_name'] ] ?? 0;
 	}
 }
 
