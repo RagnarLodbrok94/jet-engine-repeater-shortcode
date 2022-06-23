@@ -75,7 +75,9 @@ class Jet_Engine_Repeater_Shortcode {
 			$attrs['id'] = $this->get_post_id();
 		}
 
-		$attrs['row'] = $this->get_row_index( $attrs['row'] );
+		if ( is_numeric( $attrs['row'] ) ) {
+			$attrs['row'] = $this->get_row_index( $attrs['row'] );
+		}
 
 		$fields = get_post_meta( $attrs['id'], $attrs['repeater_name'], true );
 		$row    = $fields[ 'item-' . $attrs['row'] ] ?? array();
